@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./validator.css">
+</head>
+<body>
+    <header>
+        <div class="header__content">
+            <a href="#" target="_blank"><button type="button" class="btn blue">Sign in</button></a>
+            <a href="./index.html"><button type="button" class="btn green">Sign up</button></a>
+        </div>
+    </header>
+    <div class="form__validation">
+        <form action="" method="POST" id="form-1" class="form">
+            <div class="form__header">
+                <h2>Register Here</h2>
+                <p>Create your account. It's free and only takes a minute.</p>
+            </div>
+            <div class="form__group fullname"></div>
+            <div class="form__group email"></div>
+            <div class="form__group password"></div>
+            <div class="form__group password_confirmation"></div>
+            <div class="form__group select"></div>
+            <div class="form__group option radio"></div>
+            <div class="form__group option checkbox"></div>
+            <!-- OPTIONAL -->
+            <a href="https://anduc146khmt.github.io/RandomPasswordApp/" class="generatorPasswords" target="_blank">Generate your password here</a>
+            <button class="form__submit">Register</button>
+        </form>
+    </div>
+    <script src="./validator.js"></script>
+    <script>
+        Validator({
+            form: '#form-1',
+            input: '.form__input',
+            message : '.form__message',
+            submit : '.form__submit',
+            optional: '.generatorPasswords',
+            rules: [
+                Validator.isRequired('#fullname','Please fill in this field'),
+                Validator.isRequired('#email','Please fill in this field'),
+                Validator.isRequired('#password','Please fill in this field'),
+                Validator.isRequired('#password_confirmation','Please fill in this field'),
+                Validator.isRequired('#country','Please fill in this field'),
+                Validator.isRequired('input[name="job"]','Please choose your job'),
+                Validator.isRequired('input[name="field"]','Please choose at least one interesting field'),
+                Validator.isEmail('#email', 'Invalid email address. Please follow default format'),
+                Validator.isStrongPassword('#password', 6),
+                Validator.isConfirmed('#password_confirmation', function() { 
+                    return $('#password').value;
+                }, 'Password is not matched width former password'),
+            ],
+            getOutput : function(data) {
+                console.log(data);
+                return data;
+            }
+        })
+    </script>
+</body>
+</html>
