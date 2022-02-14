@@ -3,4 +3,4 @@ Validate form to validate data information when logging or signing up to a websi
 <br/>
 It also stores user account after they sign up or log in website.
 <br/>
-Link: https://anduc146khmt.github.io/ValidateForm/
+Link: https://anduc146khmt.github.io/loginValidate/
